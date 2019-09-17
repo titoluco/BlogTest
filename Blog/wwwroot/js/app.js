@@ -22,6 +22,9 @@ window.pageEvents = {
     loadMoreBlogPosts: function () {
         blogService.loadMoreBlogPosts();
     },
+    ExitBlogPost: function () {
+        blogService.ExitBlogPost();
+    },
     tryAddHomeScreen: function () {
         defferedPrompt.prompt();
         defferedPrompt.userChoice.then((choiceResult) => {

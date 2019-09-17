@@ -18,6 +18,7 @@
         $('.blog-list').append(cardHtml);
     }
 
+
     function showBlogItem(html, link) {
         var template = $('#blog-item').html();
         template = template.replace('{{Link}}', link);
@@ -25,8 +26,14 @@
         $('#blog-item-container').html(template);
     }
 
+    function hidenBlogItem() {        
+        var template = $('#blog-item').html();
+        $('#blog-item-container').html("");        
+    }
+
     return {
         appendBlogList: appendBlogList,
-        showBlogItem: showBlogItem
-    }
+        showBlogItem: showBlogItem,
+        hidenBlogItem: hidenBlogItem
+    };
 });

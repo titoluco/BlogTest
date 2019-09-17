@@ -71,6 +71,10 @@
             });
     }
 
+    function ExitBlogPost() {          
+        template.hidenBlogItem();
+    }
+
     function loadMoreBlogPosts() {
         loadData(blogMorePostsUrl + clientStorage.getOldestBlogPostId());
     }
@@ -78,6 +82,7 @@
     return {
         loadLatestBlogPosts: loadLatestBlogPosts,
         loadBlogPost: loadBlogPost,
-        loadMoreBlogPosts: loadMoreBlogPosts
-    }
+        loadMoreBlogPosts: loadMoreBlogPosts,
+        ExitBlogPost: ExitBlogPost
+    };
 });
