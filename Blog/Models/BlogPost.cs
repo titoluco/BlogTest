@@ -20,5 +20,6 @@ namespace Blog.Models
                 return ShortDescription.UrlFriendly(50);
             }
         }
-    }
+    }
+
 }

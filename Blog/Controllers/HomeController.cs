@@ -10,6 +10,12 @@ namespace Blog.Controllers
 {
     public class HomeController : Controller
     {
+        IBlogService _blogService;
+
+            public HomeController(IBlogService blogService)
+        {
+            _blogService = blogService;
+        }
         public IActionResult Index()
         {
             return View();
@@ -41,22 +47,38 @@ namespace Blog.Controllers
         }
 
 
+        //public JsonResult LatestBlogPosts()
+        //{
+        //    var posts = new List<BlogPost>() {
+        //                 new BlogPost { PostId = 1, Title =
+        //                "xxx", ShortDescription = "xxx" },
+        //                 new BlogPost { PostId = 2, Title =
+        //                "xxx", ShortDescription = "xxx" },
+        //                 new BlogPost { PostId = 3, Title =
+        //                "xxx", ShortDescription = "xxx" },
+        //                 new BlogPost { PostId = 4, Title =
+        //                "xxx", ShortDescription = "xxx" },
+        //                 new BlogPost { PostId = 5, Title =
+        //                "xxx", ShortDescription = "xxx" }
+        //    };
+        //    return Json(posts);
+        //}
+
         public JsonResult LatestBlogPosts()
         {
-            var posts = new List<BlogPost>() {
-                         new BlogPost { PostId = 1, Title =
-                        "xxx", ShortDescription = "xxx" },
-                         new BlogPost { PostId = 2, Title =
-                        "xxx", ShortDescription = "xxx" },
-                         new BlogPost { PostId = 3, Title =
-                        "xxx", ShortDescription = "xxx" },
-                         new BlogPost { PostId = 4, Title =
-                        "xxx", ShortDescription = "xxx" },
-                         new BlogPost { PostId = 5, Title =
-                        "xxx", ShortDescription = "xxx" }
-            };
+            var posts = _blogService.GetLatestPosts();
             return Json(posts);
         }
+        public ContentResult Post(string link)
+        {
+            return Content(_blogService.GetPostText(link));
+        }
+
+        public JsonResult MoreBlogPosts(int oldestBlogPostId)
+        {
+            var posts = _blogService.GetOlderPosts(oldestBlogPostId);
+            return Json(posts);
+        }
 
     }
 }
