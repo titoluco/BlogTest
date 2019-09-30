@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.Models;
+using Blog.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Blog.Controllers
 {
@@ -12,7 +14,7 @@ namespace Blog.Controllers
     {
         IBlogService _blogService;
 
-            public HomeController(IBlogService blogService)
+        public HomeController(IBlogService blogService)
         {
             _blogService = blogService;
         }
@@ -21,10 +23,13 @@ namespace Blog.Controllers
             return View();
         }
 
+        public IActionResult Teste()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 

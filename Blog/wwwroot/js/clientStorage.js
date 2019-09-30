@@ -23,6 +23,14 @@
         });
     }
 
+    function removePostText(link, text) {
+        //return new Promise(function (resolve, reject) {
+        //    blogInstance.removePostText('#' + link, text).then(function () {
+        //        resolve();
+        //    });
+        //});
+    }
+
     function addPosts(posts) {
         return new Promise(function (resolve, reject) {
 
@@ -47,8 +55,8 @@
 
             blogInstance.keys().then(function (keys) {
 
-                keys = keys.filter(function (a) { return a && !a.includes('#') });
-                keys = keys.sort(function (a, b) { return a - b });
+                keys = keys.filter(function (a) { return a && !a.includes('#'); });
+                keys = keys.sort(function (a, b) { return a - b; });
 
                 var index = keys.indexOf(oldestBlogPostId);
                 if (index == -1) { index = keys.length; }

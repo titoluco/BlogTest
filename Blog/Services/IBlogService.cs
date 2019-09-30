@@ -1,7 +1,7 @@
 ﻿using Blog.Models;
 using System.Collections.Generic;
 
-namespace Blog.Controllers
+namespace Blog.Services
 {
     public interface IBlogService
     {

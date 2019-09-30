@@ -43,7 +43,7 @@
                 clientStorage.getPosts()
                     .then(function (posts) {
                         template.appendBlogList(posts);
-                    })
+                    });
             });
     }
 
@@ -71,6 +71,26 @@
             });
     }
 
+    function addFavourite(id) {
+
+        //fetchPromise(blogPostUrl, id, true)
+        //    .then(function (status) {
+        //        $('#connection-status').html(status);
+
+        //        clientStorage.getPostText(link)
+        //            .then(function (data) {
+        //                if (!data) {
+        //                    template.showBlogItem($('#blog-content-not-found').html(), link);
+        //                } else {
+        //                    var converter = new showdown.Converter();
+        //                    html = converter.makeHtml(data);
+        //                    template.showBlogItem(html, link);
+        //                }
+        //                window.location = '#' + link;
+        //            })
+        //    });
+    }
+
     function ExitBlogPost() {          
         template.hidenBlogItem();
     }
@@ -83,6 +103,7 @@
         loadLatestBlogPosts: loadLatestBlogPosts,
         loadBlogPost: loadBlogPost,
         loadMoreBlogPosts: loadMoreBlogPosts,
-        ExitBlogPost: ExitBlogPost
+        ExitBlogPost: ExitBlogPost,
+        addFavourite: addFavourite
     };
 });

@@ -20,6 +20,7 @@ namespace Blog.Models
                 return ShortDescription.UrlFriendly(50);
             }
         }
+        public string favorito { get; set; }
     }
 
 }

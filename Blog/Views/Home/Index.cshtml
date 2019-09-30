@@ -69,6 +69,7 @@
 
 <script id="blog-card" type="text/template">
     <div class="card">
+        <span id="teste" class="alert"><button class="fa fa-star {{favorito}}" onclick="pageEvents.addFavourite('{{PostIdFavorito}}');"></button></span>
         <div class="card-body">
             <h5 class="card-title">{{PostId}} - {{Title}}</h5>
             <p class="card-text">{{ShortDescription}}</p>
@@ -81,7 +82,7 @@
         {{Content}}
     </div>
     <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
-    
+
 </script>
 
 <script id="blog-content-not-found" type="text/template">
