@@ -67,9 +67,30 @@
 
 <div id="blog-item-container"></div>
 
+<div id="modalAlert" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="bodyModal" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script id="blog-card" type="text/template">
     <div class="card">
-        <span id="teste" class="alert"><button class="fa fa-star {{favorito}}" onclick="pageEvents.addFavourite('{{PostIdFavorito}}');"></button></span>
+        <span>
+            @*<button id="fav{{PostId}}" class="fa fa-star {{favorito}}" onclick="pageEvents.addFavourite('{{PostId}}');"></button>*@
+            <a onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star {{favorito}}"></i></a>            
+        </span>
         <div class="card-body">
             <h5 class="card-title">{{PostId}} - {{Title}}</h5>
             <p class="card-text">{{ShortDescription}}</p>

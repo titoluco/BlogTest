@@ -2,12 +2,13 @@
 
     function generateBlogItem(item) {
         var template = $('#blog-card').html();
-        template = template.replace('{{PostId}}', item.postId);
-        template = template.replace('{{Title}}', item.title);
-        template = template.replace('{{ShortDescription}}', item.shortDescription);
-        template = template.replace('{{Link}}', item.link);
-        template = template.replace('{{favorito}}', item.favorito);
-        template = template.replace('{{PostIdFavorito}}', item.postId);
+        template = template.replace(/{{PostId}}/g, item.postId);
+        template = template.replace(/{{Title}}/g, item.title);
+        template = template.replace(/{{ShortDescription}}/g, item.shortDescription);
+        template = template.replace(/{{Link}}/g, item.link);
+        template = template.replace(/{{favorito}}/g, item.favorito);
+        //template = template.replace('{{PostIdFavorito}}', item.postId);
+        //template = template.replace('{{IdFavorito}}', item.postId);
         return template;
     }
 

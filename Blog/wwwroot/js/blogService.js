@@ -3,6 +3,7 @@
     var blogLatestPostsUrl = '/Home/LatestBlogPosts/';
     var blogPostUrl = '/Home/Post/?link=';
     var blogMorePostsUrl = '/Home/MoreBlogPosts/?oldestBlogPostId=';
+    var FavouritePostsUrl = '/Home/AlterFavourite/?PostId=';
 
     function fetchPromise(url, link, text) {
 
@@ -73,22 +74,34 @@
 
     function addFavourite(id) {
 
-        //fetchPromise(blogPostUrl, id, true)
-        //    .then(function (status) {
-        //        $('#connection-status').html(status);
+        fetchPromise(FavouritePostsUrl, id, true)
+            .then(function (status) {
+                var objId = "#fav" + id;
+                var css = $(objId).attr("class").replace('fa fa-star ', '');
+                if (css = css === "favorito") {
+                    $(objId).addClass("adicionado");
+                    $("#bodyModal").html("<p>add favorito</p>");
+                    $("#modalAlert").modal("show");
+                }
+                else {
+                    $(objId).removeClass("adicionado");
+                    $("#bodyModal").html("<p>remove favorito</p>");
+                    $("#modalAlert").modal("show");
+                }
+                
 
-        //        clientStorage.getPostText(link)
-        //            .then(function (data) {
-        //                if (!data) {
-        //                    template.showBlogItem($('#blog-content-not-found').html(), link);
-        //                } else {
-        //                    var converter = new showdown.Converter();
-        //                    html = converter.makeHtml(data);
-        //                    template.showBlogItem(html, link);
-        //                }
-        //                window.location = '#' + link;
-        //            })
-        //    });
+                //clientStorage.getPostText(link)
+                //    .then(function (data) {
+                //        if (!data) {
+                //            template.showBlogItem($('#blog-content-not-found').html(), link);
+                //        } else {
+                //            var converter = new showdown.Converter();
+                //            html = converter.makeHtml(data);
+                //            template.showBlogItem(html, link);
+                //        }
+                //        window.location = '#' + link;
+                //    })
+            });
     }
 
     function ExitBlogPost() {          
