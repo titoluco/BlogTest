@@ -39,7 +39,7 @@ namespace Blog.Services
 
 
 
-                new BlogPost { PostId = 1, Title = "Obter posts via API", ShortDescription = "Como usar fetch para obter uma lista de posts do blog", favorito = "favorito" },
+                new BlogPost { PostId = 1, Title = "Obter posts via API", ShortDescription = "Como usar fetch para obter uma lista de posts do blog", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav1").ToString() },
                 new BlogPost { PostId = 2, Title = "Usando Indexed DB", ShortDescription = "Como salvar lista de posts utilizando indexed DB", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav2").ToString()  },
                 new BlogPost { PostId = 3, Title = "Gravando posts do blog no cache", ShortDescription = "Como usar a Cache API para salvar posts de blog que podem ser acessados offline", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav3").ToString()  },
                 new BlogPost { PostId = 4, Title = "Obtendo dado em cache com Service Worker", ShortDescription = "Como utilizar Service Worker para obter dado do cache quando o usuário está offline", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav4").ToString()  },
@@ -50,7 +50,7 @@ namespace Blog.Services
                 new BlogPost { PostId = 9, Title = "Xamarim", ShortDescription = "Como implementar uma aplicação Xamarim", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav9").ToString()  },
                 new BlogPost { PostId = 10, Title = "Unity", ShortDescription = "Como implementar uma aplicação Unity", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav10").ToString()  },
                 new BlogPost { PostId = 11, Title = "Angular", ShortDescription = "Como implementar uma aplicação Angular", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav11").ToString()  },
-                new BlogPost { PostId = 12, Title = "React", ShortDescription = "Como implementar uma aplicação React", favorito = "favorito"  }
+                new BlogPost { PostId = 12, Title = "React", ShortDescription = "Como implementar uma aplicação React", favorito = _httpContextAccessor.HttpContext.Session.GetString("fav12").ToString()  }
             };
             }
         }
@@ -80,6 +80,11 @@ namespace Blog.Services
         public List<BlogPost> GetLatestPosts()
         {
             return Posts.OrderByDescending(_ => _.PostId).Take(3).ToList();
+        }
+
+        public List<BlogPost> GetFavouritesPosts()
+        {
+            return Posts.OrderByDescending(_ => _.PostId).Where(x => x.favorito == "favorito adicionado").ToList();
         }
 
         public List<BlogPost> GetOlderPosts(int oldestPostId)

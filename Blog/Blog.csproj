@@ -26,4 +26,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Home\Favourite.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

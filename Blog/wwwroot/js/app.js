@@ -22,6 +22,9 @@ window.pageEvents = {
     loadBlogPost: function (link) {
         blogService.loadBlogPost(link);
     },
+    loadFavouritePost: function () {
+        blogService.loadFavouritePost();
+    },
     loadMoreBlogPosts: function () {
         blogService.loadMoreBlogPosts();
     },
@@ -40,4 +43,4 @@ window.pageEvents = {
     }
 };
 
-blogService.loadLatestBlogPosts();
+//blogService.loadLatestBlogPosts();

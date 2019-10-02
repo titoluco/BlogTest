@@ -3,7 +3,8 @@
     var blogLatestPostsUrl = '/Home/LatestBlogPosts/';
     var blogPostUrl = '/Home/Post/?link=';
     var blogMorePostsUrl = '/Home/MoreBlogPosts/?oldestBlogPostId=';
-    var FavouritePostsUrl = '/Home/AlterFavourite/?PostId=';
+    var AlterFavouriteUrl = '/Home/AlterFavourite/?PostId=';
+    var FavouritePostsUrl = '/Home/LatestBlogPosts/';
 
     function fetchPromise(url, link, text) {
 
@@ -74,7 +75,7 @@
 
     function addFavourite(id) {
 
-        fetchPromise(FavouritePostsUrl, id, true)
+        fetchPromise(AlterFavouriteUrl, id, true)
             .then(function (status) {
                 var objId = "#fav" + id;
                 var css = $(objId).attr("class").replace('fa fa-star ', '');
@@ -111,10 +112,14 @@
     function loadMoreBlogPosts() {
         loadData(blogMorePostsUrl + clientStorage.getOldestBlogPostId());
     }
+    function loadFavouritePost() {
+        loadData(FavouritePostsUrl);
+    }
 
     return {
         loadLatestBlogPosts: loadLatestBlogPosts,
         loadBlogPost: loadBlogPost,
+        loadFavouritePost: loadFavouritePost,
         loadMoreBlogPosts: loadMoreBlogPosts,
         ExitBlogPost: ExitBlogPost,
         addFavourite: addFavourite

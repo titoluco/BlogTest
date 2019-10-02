@@ -23,6 +23,11 @@ namespace Blog.Controllers
             return View();
         }
 
+        public IActionResult Favourite()
+        {
+            return View();
+        }
+
         public IActionResult Teste()
         {
             return View();
@@ -74,6 +79,13 @@ namespace Blog.Controllers
             var posts = _blogService.GetLatestPosts();
             return Json(posts);
         }
+
+        public JsonResult FavouritesBlogPosts()
+        {
+            var posts = _blogService.GetFavouritesPosts();
+            return Json(posts);
+        }
+
         public ContentResult Post(string link)
         {
             return Content(_blogService.GetPostText(link));
