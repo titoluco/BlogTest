@@ -43,4 +43,10 @@ window.pageEvents = {
     }
 };
 
-//blogService.loadLatestBlogPosts();
+if ($("#blog-title").html()) {
+    blogService.loadLatestBlogPosts();
+}
+else {
+    blogService.loadFavouritePost();
+}
+

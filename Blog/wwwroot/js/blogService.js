@@ -4,7 +4,7 @@
     var blogPostUrl = '/Home/Post/?link=';
     var blogMorePostsUrl = '/Home/MoreBlogPosts/?oldestBlogPostId=';
     var AlterFavouriteUrl = '/Home/AlterFavourite/?PostId=';
-    var FavouritePostsUrl = '/Home/LatestBlogPosts/';
+    var FavouritePostsUrl = '/Home/FavouritesBlogPosts/';
 
     function fetchPromise(url, link, text) {
 
