@@ -48,6 +48,25 @@
                     });
             });
     }
+    function loadFavourite(url) {
+        fetchPromise(url)
+            .then(function (status) {
+                $('#connection-status').html(status);
+
+                clientStorage.getFavouritePosts()
+                    .then(function (posts) {
+                        //    template.appendBlogList(posts);
+                        //});
+                        if (posts.length > 0) {
+                            template.appendBlogList(posts);
+                        } else {
+                            $('#connection-status').html("Sem favoritos");
+                        }
+                    }).catch(function (e) {
+                        $('#connection-status').html(e);
+                    });
+            });
+    }
 
     function loadLatestBlogPosts() {
         loadData(blogLatestPostsUrl);
@@ -79,7 +98,7 @@
             .then(function (status) {
                 var objId = "#fav" + id;
                 var css = $(objId).attr("class").replace('fa fa-star ', '');
-                if (css = css === "favorito") {
+                if (css === "favorito") {
                     $(objId).addClass("adicionado");
                     $("#bodyModal").html("<p>add favorito</p>");
                     $("#modalAlert").modal("show");
@@ -113,7 +132,7 @@
         loadData(blogMorePostsUrl + clientStorage.getOldestBlogPostId());
     }
     function loadFavouritePost() {
-        loadData(FavouritePostsUrl);
+        loadFavourite(FavouritePostsUrl);
     }
 
     return {
